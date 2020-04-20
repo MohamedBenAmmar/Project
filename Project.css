@@ -1,0 +1,80 @@
+body {
+	margin : 0;
+	background-color : dodgerblue;
+    color : snow;
+    display : grid;
+    grid :
+    "header header header header" auto 
+    "...lists active..." auto /
+    1fr minmax(100px,300px) minmax(250px,500px) 1fr;
+    
+    } 
+.title {
+	grid-area: header;
+	text-align: center;
+	letter-spacing: 10px;
+	font-size : 100px;
+	font-weight:900px;
+}
+.all-tasks {
+	grid-area: lists;
+}
+
+.task-list{
+	line-height : 1.7;
+	list-style: circle;
+	padding-left:1.1em ;
+}
+.list-name:hover{
+	opacity:0.7;
+}
+form {
+	display : flex;
+}
+.btn {
+	cursor : pointer;
+	background : 0;
+	border : 0;
+	padding : 0;
+	color : inherit ;
+}
+.btn.create:hover {
+	opacity:0.7;
+}
+
+.new {
+	background : transparent;
+	border :0;
+	font-size: inherit;
+	color : inherit;
+    border-bottom: 1px solid currentcolor;
+    order : 2;
+}
+.new:focus {
+	border-bottom-width:3px;
+}
+.new:focus::placeholder {
+	opacity : 0.2;
+}
+.todo-list {
+	grid-area:active;
+	background :snow;
+	color : gray;
+}
+.todo-header {
+	padding:0.5em;
+	background : gainsboro;
+	display : flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.list-title {
+	margin :0;
+}
+.task-count{
+	margin : 0;
+}
+.todo-body {
+	padding :0.5em;
+}
+
