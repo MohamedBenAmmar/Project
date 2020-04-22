@@ -1,5 +1,6 @@
 <!DOCTYPE html>
  <head>
+ <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
  <link rel="stylesheet" type="text/css" href="project.css">
  <script type='text/javascript' src='project.js'></script>
   <title> Project </title>
@@ -8,59 +9,87 @@
 
 <body>
  <h1 class="title">My To Do List </h1>	
-<div class="all-tasks">
- <h2 class="task-list-title"> Things i need to do : </h2>
- <ul class="task-list">
-  <li class="active-list"> RBK </li>
-  <li> Grocery </li>
-  <li> Games </li>
- </ul>
+ <div class="all-tasks">
+ <h2 class="task-list-title"> My lists : </h2>
+ <div class="task-list" id="list">
+
+ </div>
  <form>
-	<input type="text" class="new list" placeholder="new list name">
-	<button class="btn create">+</button>
+	<input type="text" class="new list" id="text" placeholder="new list name">
+	<button class="btn create" id="addlist_btn" type="button" >+</button>
 	</form>
 </div>
 
   
 <div class="todo-list">
   <div class="todo-header">
-    <h2 class="list-title"> RBK </h2>
-    <p class="task-count"> 3 tasks remaining </p>
+    <h2 class="list-title"> List of tasks :  </h2>
+    <p class="task-count"> 0 tasks remaining </p>
     </div>	
   <div class="todo-body">
-  <div class="tasks">
-  	<div class="task">
-	<input type="checkbox" id="task1">
-	<label for="task-1">
-	<span class="custom-checkbox"></span>Do the project 
-  </label>
-  </div>
-  <div class="task">
-  <input type="checkbox" id="task-2">
-	<label for="task-2">
-	<span class="custom-checkbox"></span>Finish the bootstrap 
-  </label>
-  </div>
-  <div class="task">
-  <input type="checkbox" id="task-3">
-	<label for="task-3">
-	<span class="custom-checkbox"></span>Be ready for the immersive part 
-  </label>
-  </div>
-  
+  <div class="tasks" id="tasks">
+  	
+ 
+ </div>
 </div> 
   
   <div class="new-task-creator">
   	<form>
-	<input type="text" class="new task" placeholder="new task name">
-	<button class="btn create">+</button>
+	<input type="text" class="new task" id="text1" placeholder="new task name">
+	<button class="btn create" id="addtask_btn1" type="button">+</button>
 	</form>
   </div>
   <div class="delete-stuff">
-  	<button class="btn delete">clear completed tasks</button>
-  	<button class="btn delete">delete list</button>
+  	<button class="btn delete" id="del" type="button">clear completed tasks</button>
+  	<button class="btn delete" id="del1" type="button">delete list</button>
   </div>
 </div>	
 </div>
+ <script>
+ $(document).ready(function() {
+  var i=0;
+  var lists = [];
+ $('#addlist_btn').click(function() {
+	var x = $('#text').val();
+  lists.push(x);
+	$('#list').append('<div class="list-name" id="'+i+'"><input type="checkbox"><label>'+x+'</label></div><br>');
+ $('#text').val('');
+ $('#tasks').append('<div class="listname-'+i+'"></div>');
+ i++;
+});
+
+$('#addtask_btn1').click(function() {
+  var x = $('#text1').val();
+  var list_id = $("#list input:checked").parent().attr('id');
+  $('#tasks .listname-'+list_id).append('<div class="task-name" id="task-item"><input type="checkbox"><label>'+x+'</label></div><br>');
+$('#text1').val('');
+  ;}); 
+
+
+$("#del1").click(function(){  
+//var x=$("#list input:checked").find("label").val();
+//var y;
+//console.log(x);
+//for (var j = 0 ; j < lists.length; j++){
+//	if (lists[j] === x) {
+//		y=i;
+//	}
+//}
+$("#list input:checked").parent().remove();
+$('.listname-'+0).remove();
+
+})
+
+$("#del").click(function(){
+  $("#tasks input:checked").parent().remove();
+})
+
+
+
+
+
+
+})
+</script>
  </body>
 </html>

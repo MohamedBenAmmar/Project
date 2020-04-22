@@ -4,9 +4,9 @@ body {
     color : snow;
     display : grid;
     grid :
-    "header header header header" auto 
-    "...lists active..." auto /
-    1fr minmax(100px,300px) minmax(250px,500px) 1fr;
+    "header header header header" 
+    "...lists active..." 
+    
     
     } 
 .title {
@@ -25,11 +25,16 @@ body {
 	list-style: circle;
 	padding-left:1.1em ;
 }
+.list-name {
+	cursor:pointer;
+}
 .list-name:hover{
 	opacity:0.7;
 }
 form {
+	margin:0;
 	display : flex;
+	background-color:dodgerblue;
 }
 .btn {
 	cursor : pointer;
@@ -38,15 +43,19 @@ form {
 	padding : 0;
 	color : inherit ;
 }
+.btn.create {
+	font-size:1.5rem;
+	font-weight:900;
+	margin-right:0.25em;
+}
 .btn.create:hover {
 	opacity:0.7;
 }
-
 .new {
 	background : transparent;
 	border :0;
 	font-size: inherit;
-	color : inherit;
+	color:inherit;
     border-bottom: 1px solid currentcolor;
     order : 2;
 }
@@ -56,10 +65,13 @@ form {
 .new:focus::placeholder {
 	opacity : 0.2;
 }
+.active-list {
+	font-weight:700;
+}
 .todo-list {
 	grid-area:active;
-	background :snow;
-	color : gray;
+	background :dodgerblue;
+	color : snow;
 }
 .todo-header {
 	padding:0.5em;
@@ -70,11 +82,34 @@ form {
 }
 .list-title {
 	margin :0;
+	margin-right: 1em;
 }
 .task-count{
 	margin : 0;
 }
 .todo-body {
 	padding :0.5em;
+	position:relative;
 }
 
+.task label{
+	display:flex;
+	align-items:center;
+	margin-bottom:1.25em;
+}
+.task label::after {
+	content:"";
+	position:absolute;
+	right:0;
+	left:0;
+	bottom:-50%;
+	height:1px;
+	background:currentColor;
+    opacity:0.1;
+}
+.delete-stuff {
+		padding:0.5em;
+	display : flex;
+	align-items: center;
+	justify-content: space-between;
+}
